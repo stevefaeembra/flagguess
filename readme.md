@@ -1,3 +1,5 @@
-# Vite Boilerplate
+# Flag Guessing Game
 
-Base project for a TypeScript application using React, Vite, TailwindCSS and DaisyUI
+Flag guessing game
+
+TypeScript application using React, Vite, TailwindCSS and DaisyUI
