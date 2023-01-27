@@ -8,7 +8,7 @@ function App() {
         <h1>Flag guessing Game</h1>
         <br />
       </div>
-      <FlagCard isoCode="US" />
+      <FlagCard showRandom={true} isoCode="US" />
     </>
   );
 }
