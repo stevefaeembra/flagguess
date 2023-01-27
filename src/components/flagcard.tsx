@@ -12,7 +12,9 @@ export function FlagCard({ ...props }: Props) {
       <figure>
         <img src={fileName} alt="Flag" />
       </figure>
-      <div className="card-body">{`Hello I am a flag for ${props.name}`}</div>
+      <div className="card-body">
+        <span className="font-bold">{`${props.name}`}</span>
+      </div>
     </div>
   );
 }
