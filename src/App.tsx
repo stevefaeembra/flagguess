@@ -1,14 +1,16 @@
 import "./App.css";
 import { FlagCard } from "./components/flagcard";
+import { getRandomFlag } from "./utilities/flagdata";
 
 function App() {
+  const { isocode, name } = getRandomFlag();
   return (
     <>
       <div>
-        <h1>Flag guessing Game</h1>
+        <h1>Guess the flag</h1>
         <br />
       </div>
-      <FlagCard showRandom={true} isoCode="US" />
+      <FlagCard isoCode={isocode} name={name} />
     </>
   );
 }
