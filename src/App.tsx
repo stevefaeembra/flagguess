@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import "./App.css";
 import { FlagCard } from "./components/flagcard";
 import { getRandomFlag } from "./utilities/flagdata";
 
 function App() {
-  const [isoCode, setIsoCode] = useState("");
-  const [name, setName] = useState("");
+  const [isoAnswer, setIsoAnswer] = useState("");
+  const [nameAnswer, setNameAnswer] = useState("");
+  const randomFlag = useCallback(() => getRandomFlag(), []);
+
+  const { isocode: i, name: n } = randomFlag();
 
   useEffect(() => {
-    const { isocode, name } = getRandomFlag();
-    setIsoCode(isocode);
-    setName(name);
-    console.log(`Current flag ${isocode} ${name}`);
-  }, [setIsoCode, setName, getRandomFlag]);
+    setIsoAnswer(i);
+    setNameAnswer(n);
+    console.log(`Current flag ${i} ${n}`);
+  }, [setIsoAnswer, setNameAnswer, randomFlag]);
 
   return (
     <>
@@ -20,7 +22,7 @@ function App() {
         <h1>Guess the flag</h1>
         <br />
       </div>
-      <FlagCard isoCode={isoCode} name={name} />
+      <FlagCard isoCode={isoAnswer} name={nameAnswer} />
     </>
   );
 }
