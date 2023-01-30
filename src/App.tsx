@@ -13,14 +13,12 @@ function App() {
   const { isocode: i, name: n } = randomFlag();
 
   useEffect(() => {
-    console.log("in useEffect1");
     setIsoAnswer(i);
     setNameAnswer(n);
-    console.log(`Current flag ${i} ${n}`);
+    console.log(`Answer: ${i} ${n}`);
   }, [setIsoAnswer, setNameAnswer, randomFlag]);
 
   useEffect(() => {
-    console.log("in useEffect2");
     setOptions(
       getOptions({
         isocode: isoAnswer,
