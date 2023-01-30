@@ -30,14 +30,14 @@ function App() {
   }, [isoAnswer, nameAnswer, getOptions, setOptions]);
 
   return (
-    <>
+    <div>
       <div>
         <h1>Guess the flag</h1>
         <br />
       </div>
       <FlagCard isoCode={isoAnswer} name={nameAnswer} />
       <OptionsCard choices={options} />
-    </>
+    </div>
   );
 }
 

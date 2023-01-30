@@ -1,4 +1,5 @@
 import { ISOCODES } from "../data/isocodes";
+import { shuffleArray } from "./utilities";
 
 export const getRandomFlag = () => {
   // get a random isocode + country from list
@@ -23,13 +24,16 @@ export const getOptions = (answer) => {
   while (choices.length<=5) {
     const pick = parseInt(Math.random() * parseFloat(isocodes.length));
     const [code,name] = options[pick];
-    choices.push(
-      {
-        isocode : code,
-        name: name
-      }
-    )
+    // prevent duplicates!
+    if (!choices.find(existing => existing.isocode === code)) {
+      choices.push(
+        {
+          isocode : code,
+          name: name
+        }
+      )
+    }
   };
   console.log('choices', choices);
-  return choices;
+  return shuffleArray(choices);
 }
