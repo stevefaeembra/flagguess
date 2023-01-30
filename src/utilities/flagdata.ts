@@ -34,6 +34,5 @@ export const getOptions = (answer) => {
       )
     }
   };
-  console.log('choices', choices);
   return shuffleArray(choices);
 }
