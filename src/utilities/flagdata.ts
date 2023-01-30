@@ -15,7 +15,7 @@ export const getRandomFlag = () => {
   )
 }
 
-export const getOptions = (answer) => {
+export const getChoices = (answer) => {
   // generate a random set of possibilites
   // which includes the answer
   let choices =[answer];

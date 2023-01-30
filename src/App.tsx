@@ -2,30 +2,27 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import "./App.css";
 import { FlagCard } from "./components/flagcard";
 import { OptionsCard } from "./components/optionscard";
-import { getOptions, getRandomFlag } from "./utilities/flagdata";
+import { getChoices, getRandomFlag } from "./utilities/flagdata";
 
 function App() {
-  const [isoAnswer, setIsoAnswer] = useState("");
-  const [nameAnswer, setNameAnswer] = useState("");
-  const randomFlag = useCallback(() => getRandomFlag(), []);
+  const [answer, setAnswer] = useState({});
   const [options, setOptions] = useState([{}]);
 
-  const { isocode: i, name: n } = randomFlag();
+  const correctAnswer = useMemo(() => getRandomFlag(), []);
 
   useEffect(() => {
-    setIsoAnswer(i);
-    setNameAnswer(n);
-    console.log(`Answer: ${i} ${n}`);
-  }, [setIsoAnswer, setNameAnswer, randomFlag]);
+    setAnswer(correctAnswer);
+    console.log(`Correct Answer: ${correctAnswer.name} ${correctAnswer.isocode}`);
+  }, [correctAnswer, setAnswer]);
 
   useEffect(() => {
     setOptions(
-      getOptions({
-        isocode: isoAnswer,
-        name: nameAnswer,
+      getChoices({
+        isocode: correctAnswer.isocode,
+        name: correctAnswer.name,
       })
     );
-  }, [isoAnswer, nameAnswer, getOptions, setOptions]);
+  }, [correctAnswer, getChoices, setOptions]);
 
   return (
     <div>
@@ -33,7 +30,7 @@ function App() {
         <h1>Guess the flag</h1>
         <br />
       </div>
-      <FlagCard isoCode={isoAnswer} name={nameAnswer} />
+      <FlagCard answer={correctAnswer} />
       <OptionsCard choices={options} />
     </div>
   );
