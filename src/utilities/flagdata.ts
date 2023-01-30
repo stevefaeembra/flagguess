@@ -13,3 +13,23 @@ export const getRandomFlag = () => {
     }
   )
 }
+
+export const getOptions = (answer) => {
+  // generate a random set of possibilites
+  // which includes the answer
+  let choices =[answer];
+  const isocodes = Object.keys(ISOCODES);
+  const options = Object.entries(ISOCODES);
+  while (choices.length<=5) {
+    const pick = parseInt(Math.random() * parseFloat(isocodes.length));
+    const [code,name] = options[pick];
+    choices.push(
+      {
+        isocode : code,
+        name: name
+      }
+    )
+  };
+  console.log('choices', choices);
+  return choices;
+}
