@@ -1,6 +1,6 @@
 import { ISOCODES } from "../data/isocodes";
 import { shuffleArray } from "./utilities";
-import { Flag } from "../types/interfaces";
+import { Flag, Round, GameData } from "../types/interfaces";
 
 export const getRandomFlag = () : Flag => {
   // get a random isocode + country from list
@@ -36,4 +36,25 @@ export const getChoices = (answer:Flag) : Flag[] => {
     }
   };
   return shuffleArray(choices);
+}
+
+const getRound = () : Round => {
+  const answer = getRandomFlag();
+  const newRound = getChoices(answer);
+  return {
+    answer,
+    choices: newRound,
+  }
+}
+
+export const getGame = (numberRounds: Number) : GameData => {
+  let gameRounds : Round[] = [];
+  for (let i=0; i<numberRounds; i++) {
+    gameRounds = [...gameRounds, getRound()]
+  }
+  return {
+    roundNumber: 0,
+    rounds: gameRounds,
+    score: 0,
+  }
 }

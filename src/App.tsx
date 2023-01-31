@@ -3,10 +3,16 @@ import "./App.css";
 import { useEffect, useMemo, useState } from "react";
 import { FlagCard } from "./components/flagcard";
 import { OptionsCard } from "./components/optionscard";
-import { getChoices, getRandomFlag } from "./utilities/flagdata";
+import { getGame, getChoices, getRandomFlag } from "./utilities/flagdata";
 
 function App() {
   const [options, setOptions] = useState([{}]);
+
+  const game = useMemo(() => {
+    const myGame = getGame(20);
+    console.log("Game rounds", myGame);
+    return myGame;
+  }, []);
 
   const correctAnswer = useMemo(() => getRandomFlag(), []);
   console.log(`Correct Answer: ${correctAnswer.name} ${correctAnswer.isocode}`);
