@@ -41,8 +41,10 @@ export function App() {
 
   return currentRound ? (
     <div className="container grid mx-auto my-auto">
-      <FlagCard answer={currentRound.answer} />
-      <OptionsCard choices={currentRound.choices} chooseAnswer={userChoseAnswer} />
+      <div className="card mx-auto">
+        <FlagCard answer={currentRound.answer} />
+        <OptionsCard choices={currentRound.choices} chooseAnswer={userChoseAnswer} />
+      </div>
     </div>
   ) : null;
 }
