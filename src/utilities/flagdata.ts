@@ -52,8 +52,8 @@ export const checkAnswer  = (round: Round, isoCode: string) => {
   console.log('Round', round);
   console.log('Choices', round.choices);
   console.log('isoCode', isoCode);
-  const matchy = round.choices.find(flag => flag.isocode === isoCode);
-  console.log('matchy', matchy);
+  const matchy = round.choices.find((flag) => flag.isocode === isoCode);
+  console.log('was right?', matchy?.isocode === round.answer.isocode);
   return matchy;
 }
 
