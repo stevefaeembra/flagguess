@@ -2,7 +2,7 @@ import { ISOCODES } from "../data/isocodes";
 import { shuffleArray } from "./utilities";
 import { Flag, Round, GameData } from "../types/interfaces";
 
-export const getRandomFlag = () : Flag => {
+const getRandomFlag = () : Flag => {
   // get a random isocode + country from list
   const isocodes = Object.keys(ISOCODES);
   const pick = parseInt(Math.random() * parseFloat(isocodes.length));
@@ -16,7 +16,7 @@ export const getRandomFlag = () : Flag => {
   )
 }
 
-export const getChoices = (answer:Flag) : Flag[] => {
+const getChoices = (answer:Flag) : Flag[] => {
   // generate a random set of possibilites
   // which includes the answer passed in
   let choices =[answer];
