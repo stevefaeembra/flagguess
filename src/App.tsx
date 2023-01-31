@@ -37,7 +37,6 @@ export function App() {
         incorrectAnswer: currentRound.answer,
       });
     }
-    alert(`You chose ${chosenIsocode}`);
   };
 
   return currentRound ? (
