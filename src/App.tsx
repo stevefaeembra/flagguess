@@ -21,10 +21,15 @@ function App() {
     return thisRound;
   }, [game]);
 
+  const userChoseAnswer = (chosenIsocode: string) => {
+    // click handler for answer button.
+    alert(`You chose ${chosenIsocode}`);
+  };
+
   return currentRound ? (
     <div className="container grid mx-auto my-auto">
       <FlagCard answer={currentRound.answer} />
-      <OptionsCard choices={currentRound.choices} />
+      <OptionsCard choices={currentRound.choices} chooseAnswer={userChoseAnswer} />
     </div>
   ) : null;
 }
