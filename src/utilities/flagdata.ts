@@ -47,6 +47,16 @@ const getRound = () : Round => {
   }
 }
 
+export const checkAnswer  = (round: Round, isoCode: string) => {
+  // return true if it's a good guess
+  console.log('Round', round);
+  console.log('Choices', round.choices);
+  console.log('isoCode', isoCode);
+  const matchy = round.choices.find(flag => flag.isocode === isoCode);
+  console.log('matchy', matchy);
+  return matchy;
+}
+
 export const getGame = (numberRounds: Number) : GameData => {
   let gameRounds : Round[] = [];
   for (let i=0; i<numberRounds; i++) {

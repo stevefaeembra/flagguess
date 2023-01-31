@@ -15,3 +15,9 @@ export interface GameData {
   rounds: Round[];
   score: Number;
 }
+
+export interface UserAnswer {
+  // represents what the user selected
+  correctAnswer : Flag;
+  incorrectAnswer : Flag;
+}
