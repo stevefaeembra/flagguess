@@ -158,7 +158,7 @@ export const ISOCODES = {
   //"MH":"Montserrat",
   "MO":"Morocco",
   "MZ":"Mozambique",
-  "??1":"Myanmar",
+  //"??1":"Myanmar",
   "WA":"Namibia",
   "NR":"Nauru",
   //"BQ":"Navassa Island",
@@ -263,7 +263,7 @@ export const ISOCODES = {
   //"??5":"Western Samoa",
   //"??6":"World",
   "YM":"Yemen",
-  "??7":"Zaire",
+  //"??7":"Zaire",
   "ZA":"Zambia",
   "ZI":"Zimbabwe"
 }
