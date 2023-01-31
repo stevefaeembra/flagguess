@@ -1,7 +1,8 @@
 import React from "react";
+import { Flag } from "../types/interfaces";
 
 type Props = {
-  answer: any;
+  answer: Flag;
 };
 
 export function FlagCard({ ...props }: Props) {
@@ -14,7 +15,6 @@ export function FlagCard({ ...props }: Props) {
       <div className="card-body">
         <span className="font-bold">{`${props.answer.name}`}</span>
       </div>
-      {/* <div className="body">&nbsp;</div> */}
     </div>
   );
 }

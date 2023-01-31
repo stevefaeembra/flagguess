@@ -1,19 +1,15 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
 import "./App.css";
+
+import { useEffect, useMemo, useState } from "react";
 import { FlagCard } from "./components/flagcard";
 import { OptionsCard } from "./components/optionscard";
 import { getChoices, getRandomFlag } from "./utilities/flagdata";
 
 function App() {
-  const [answer, setAnswer] = useState({});
   const [options, setOptions] = useState([{}]);
 
   const correctAnswer = useMemo(() => getRandomFlag(), []);
-
-  useEffect(() => {
-    setAnswer(correctAnswer);
-    console.log(`Correct Answer: ${correctAnswer.name} ${correctAnswer.isocode}`);
-  }, [correctAnswer, setAnswer]);
+  console.log(`Correct Answer: ${correctAnswer.name} ${correctAnswer.isocode}`);
 
   useEffect(() => {
     setOptions(
@@ -26,10 +22,6 @@ function App() {
 
   return (
     <div className="container grid mx-auto my-auto">
-      <div>
-        {/* <h1>Guess the flag</h1> */}
-        <br />
-      </div>
       <FlagCard answer={correctAnswer} />
       <OptionsCard choices={options} />
     </div>
