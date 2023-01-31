@@ -25,9 +25,9 @@ function App() {
   }, [correctAnswer, getChoices, setOptions]);
 
   return (
-    <div>
+    <div className="container grid mx-auto my-auto">
       <div>
-        <h1>Guess the flag</h1>
+        {/* <h1>Guess the flag</h1> */}
         <br />
       </div>
       <FlagCard answer={correctAnswer} />

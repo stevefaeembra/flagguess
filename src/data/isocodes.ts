@@ -90,7 +90,7 @@ export const ISOCODES = {
   "GP":"Guadeloupe",
   //"GQ":"Guam",
   "GT":"Guatemala",
-  "GK":"Guernsey",
+  //"GK":"Guernsey",
   "GV":"Guinea",
   "PU":"Guinea-Bissau",
   "GY":"Guyana",
