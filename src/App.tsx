@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { FlagCard } from "./components/flagcard";
 import { OptionsCard } from "./components/optionscard";
 import { checkAnswer, getGame } from "./utilities/flagdata";
-import { Round } from "./types/interfaces";
+import { Flag, Round } from "./types/interfaces";
 
 export function App() {
   const [userGuess, setUserGuess] = useState({});
@@ -19,17 +19,21 @@ export function App() {
     return thisRound;
   }, [game]);
 
-  const userChoseAnswer = (chosenIsocode: string) => {
+  const userChoseAnswer = (chosenAnswer: Flag) => {
     // click handler for answer button.
-    const isCorrect = checkAnswer(currentRound, chosenIsocode);
+    const isCorrect = checkAnswer(currentRound, chosenAnswer.isocode);
     console.log(isCorrect ? "Correct!" : "Incorrect!");
     if (isCorrect) {
       setUserGuess({
+        userGuessed: chosenAnswer,
+        correct: true,
         correctAnswer: currentRound.answer,
       });
     } else {
       setUserGuess({
-        incorrectAnswer: currentRound.answer,
+        userGuessed: chosenAnswer,
+        correct: false,
+        correctAnswer: currentRound.answer,
       });
     }
   };
@@ -38,7 +42,7 @@ export function App() {
     <div className="container grid mx-auto my-auto">
       <div className="card mx-auto">
         <FlagCard answer={currentRound.answer} />
-        <OptionsCard choices={currentRound.choices} chooseAnswer={userChoseAnswer} />
+        <OptionsCard userGuess={userGuess} choices={currentRound.choices} chooseAnswer={userChoseAnswer} />
       </div>
     </div>
   ) : null;

@@ -1,6 +1,6 @@
 export interface Flag {
-  isocode: String;
-  name: String;
+  isocode: string;
+  name: string;
 }
 
 export interface Round {
