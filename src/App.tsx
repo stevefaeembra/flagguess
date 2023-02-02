@@ -10,25 +10,20 @@ export function App() {
   const [userGuess, setUserGuess] = useState({});
 
   const game = useMemo(() => {
-    console.log("useMemo");
     const myGame = getGame(20);
-    console.log("Game rounds", myGame);
     return myGame;
-  }, []);
+  }, [getGame]);
 
   const currentRound: Round = useMemo(() => {
-    console.log("useMemo currentRound");
     const thisRound = game.rounds[parseInt(game.roundNumber.toString())];
-    console.log(`Round answer: ${thisRound.answer.name} ${thisRound.answer.isocode}`);
     return thisRound;
   }, [game]);
 
   const userChoseAnswer = (chosenIsocode: string) => {
     // click handler for answer button.
-    // is it correct? XXX
-    console.log("CURRENT ROUND", currentRound);
-    console.log("CHOSE ISOCODE", chosenIsocode);
-    if (checkAnswer(currentRound, chosenIsocode)) {
+    const isCorrect = checkAnswer(currentRound, chosenIsocode);
+    console.log(isCorrect ? "Correct!" : "Incorrect!");
+    if (isCorrect) {
       setUserGuess({
         correctAnswer: currentRound.answer,
       });

@@ -47,14 +47,10 @@ const getRound = () : Round => {
   }
 }
 
-export const checkAnswer  = (round: Round, isoCode: string) => {
-  // return true if it's a good guess
-  console.log('Round', round);
-  console.log('Choices', round.choices);
-  console.log('isoCode', isoCode);
+export const checkAnswer  = (round: Round, isoCode: string) : boolean => {
+  // return true if it's correct
   const matchy = round.choices.find((flag) => flag.isocode === isoCode);
   const rightGuess = matchy?.isocode === round.answer.isocode;
-  console.log('was right?', rightGuess);
   return rightGuess;
 }
 
