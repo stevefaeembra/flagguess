@@ -1,9 +1,9 @@
-import { Flag } from "../types/interfaces";
+import { Flag, Guess } from "../types/interfaces";
 
 type Props = {
   choices: Flag[];
   chooseAnswer: Function;
-  userGuess: Object;
+  userGuess: Guess;
 };
 
 export function OptionsCard({ ...props }: Props) {

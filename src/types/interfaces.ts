@@ -21,3 +21,10 @@ export interface UserAnswer {
   correctAnswer : Flag;
   incorrectAnswer : Flag;
 }
+
+export interface Guess {
+  // user guess
+  userGuessed: Flag,
+  correct: false,
+  correctAnswer: Flag,
+}
