@@ -4,6 +4,7 @@ import { OptionsCard } from "./optionscard";
 import { useMemo, useState } from "react";
 import { checkAnswer } from "../utilities/flagdata";
 import { NextButton } from "./nextbutton";
+import { ScoreCard } from "./scorecard";
 
 type Props = {
   game: GameData;
@@ -14,6 +15,7 @@ export function GameWrapper({ ...props }: Props) {
   const [isDisabled, setIsDisabled] = useState(false);
   const [roundNumber, setRoundNumber] = useState(0);
   const currentRound = useMemo(() => props.game.rounds[roundNumber], [roundNumber]);
+  const maxRound = props.game.rounds.length;
 
   const userChoseAnswer = (chosenAnswer: Flag) => {
     // click handler for answer button.
@@ -51,6 +53,7 @@ export function GameWrapper({ ...props }: Props) {
         choices={currentRound?.choices}
         chooseAnswer={userChoseAnswer}
       />
+      <ScoreCard roundNumber={roundNumber} lastRound={20} />
       <NextButton isDisabled={!isDisabled} onNextClick={userClickedNext} />
     </div>
   );
