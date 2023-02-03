@@ -11,9 +11,9 @@ export interface Round {
 
 export interface GameData {
   // represent state of game
-  roundNumber: Number;
+  roundNumber: number;
   rounds: Round[];
-  score: Number;
+  score: number;
 }
 
 export interface UserAnswer {

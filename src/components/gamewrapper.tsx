@@ -12,11 +12,8 @@ type Props = {
 export function GameWrapper({ ...props }: Props) {
   const [userGuess, setUserGuess] = useState<Guess | undefined>();
   const [isDisabled, setIsDisabled] = useState(false);
-
-  const currentRound: Round = useMemo(() => {
-    const thisRound = props.game.rounds[parseInt(props.game.roundNumber.toString())];
-    return thisRound;
-  }, [props.game]);
+  const [roundNumber, setRoundNumber] = useState(0);
+  const currentRound = useMemo(() => props.game.rounds[roundNumber], [roundNumber]);
 
   const userChoseAnswer = (chosenAnswer: Flag) => {
     // click handler for answer button.
@@ -40,16 +37,18 @@ export function GameWrapper({ ...props }: Props) {
 
   const userClickedNext = () => {
     // click handler to advance to next round
-    alert("You clicked next");
+    setIsDisabled(false);
+    setUserGuess(undefined);
+    setRoundNumber(roundNumber + 1);
   };
 
   return (
     <div>
-      <FlagCard answer={currentRound.answer} />
+      <FlagCard answer={currentRound?.answer} />
       <OptionsCard
         isDisabled={isDisabled}
         userGuess={userGuess}
-        choices={currentRound.choices}
+        choices={currentRound?.choices}
         chooseAnswer={userChoseAnswer}
       />
       <NextButton isDisabled={!isDisabled} onNextClick={userClickedNext} />
