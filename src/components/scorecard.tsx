@@ -1,6 +1,7 @@
 import { Flag, Guess } from "../types/interfaces";
 
 type Props = {
+  score: number;
   roundNumber: number;
   lastRound: number;
 };
@@ -8,9 +9,10 @@ type Props = {
 export function ScoreCard({ ...props }: Props) {
   return (
     <div>
-      <h1>
+      <h3>
         Round {props.roundNumber + 1} / {props.lastRound}
-      </h1>
+      </h3>
+      <h3>Score : {props.score}</h3>
     </div>
   );
 }

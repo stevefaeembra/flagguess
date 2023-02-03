@@ -16,6 +16,7 @@ export function GameWrapper({ ...props }: Props) {
   const [roundNumber, setRoundNumber] = useState(0);
   const currentRound = useMemo(() => props.game.rounds[roundNumber], [roundNumber]);
   const maxRound = props.game.rounds.length;
+  const [score, setScore] = useState(0);
 
   const userChoseAnswer = (chosenAnswer: Flag) => {
     // click handler for answer button.
@@ -27,6 +28,7 @@ export function GameWrapper({ ...props }: Props) {
         correct: true,
         correctAnswer: currentRound.answer,
       });
+      setScore(score + 1);
     } else {
       setUserGuess({
         userGuessed: chosenAnswer,
@@ -53,7 +55,7 @@ export function GameWrapper({ ...props }: Props) {
         choices={currentRound?.choices}
         chooseAnswer={userChoseAnswer}
       />
-      <ScoreCard roundNumber={roundNumber} lastRound={20} />
+      <ScoreCard score={score} roundNumber={roundNumber} lastRound={20} />
       <NextButton isDisabled={!isDisabled} onNextClick={userClickedNext} />
     </div>
   );
