@@ -17,6 +17,7 @@ export function ScoreCard({ ...props }: Props) {
         {/* Score : {props.score}/ {props.lastRound} */}
         Score: {pc}
       </h3>
+      <progress value={(props.score / props.lastRound) * 100} max="100"></progress>
     </div>
   );
 }
