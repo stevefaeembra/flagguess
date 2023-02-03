@@ -1,15 +1,13 @@
 import "./App.css";
 
-import { useEffect, useMemo, useState } from "react";
-import { FlagCard } from "./components/flagcard";
-import { OptionsCard } from "./components/optionscard";
-import { checkAnswer, getGame } from "./utilities/flagdata";
-import { Flag, Guess, Round } from "./types/interfaces";
+import { useMemo } from "react";
+import { getGame } from "./utilities/flagdata";
 import { GameWrapper } from "./components/gamewrapper";
 
 export function App() {
   const game = useMemo(() => {
     const myGame = getGame(20);
+    console.log("New game!", myGame);
     return myGame;
   }, [getGame]);
 

@@ -10,6 +10,7 @@ type Props = {
 
 export function GameWrapper({ ...props }: Props) {
   const [userGuess, setUserGuess] = useState<Guess | undefined>();
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const currentRound: Round = useMemo(() => {
     const thisRound = props.game.rounds[parseInt(props.game.roundNumber.toString())];
@@ -33,12 +34,18 @@ export function GameWrapper({ ...props }: Props) {
         correctAnswer: currentRound.answer,
       });
     }
+    setIsDisabled(true);
   };
 
   return (
     <div>
       <FlagCard answer={currentRound.answer} />
-      <OptionsCard userGuess={userGuess} choices={currentRound.choices} chooseAnswer={userChoseAnswer} />
+      <OptionsCard
+        isDisabled={isDisabled}
+        userGuess={userGuess}
+        choices={currentRound.choices}
+        chooseAnswer={userChoseAnswer}
+      />
     </div>
   );
 }

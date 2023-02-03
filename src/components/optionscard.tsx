@@ -4,6 +4,7 @@ type Props = {
   choices: Flag[];
   chooseAnswer: Function;
   userGuess: Guess | undefined;
+  isDisabled: boolean;
 };
 
 export function OptionsCard({ ...props }: Props) {
@@ -23,7 +24,12 @@ export function OptionsCard({ ...props }: Props) {
           }
         }
         return (
-          <button onClick={() => props.chooseAnswer(item)} key={`btn_${item.isocode}`} className={style}>
+          <button
+            disabled={props.isDisabled}
+            onClick={() => props.chooseAnswer(item)}
+            key={`btn_${item.isocode}`}
+            className={style}
+          >
             {item.name}
           </button>
         );
