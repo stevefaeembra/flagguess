@@ -21,7 +21,6 @@ export function GameWrapper({ ...props }: Props) {
   const userChoseAnswer = (chosenAnswer: Flag) => {
     // click handler for answer button.
     const isCorrect = checkAnswer(currentRound, chosenAnswer.isocode);
-    console.log(isCorrect ? "Correct!" : "Incorrect!");
     if (isCorrect) {
       setUserGuess({
         userGuessed: chosenAnswer,
