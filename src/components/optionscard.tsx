@@ -3,7 +3,7 @@ import { Flag, Guess } from "../types/interfaces";
 type Props = {
   choices: Flag[];
   chooseAnswer: Function;
-  userGuess: Guess;
+  userGuess: Guess | undefined;
 };
 
 export function OptionsCard({ ...props }: Props) {
