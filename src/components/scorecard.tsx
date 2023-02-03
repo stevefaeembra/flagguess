@@ -7,12 +7,16 @@ type Props = {
 };
 
 export function ScoreCard({ ...props }: Props) {
+  const pc = props.score / props.lastRound;
   return (
     <div>
       <h3>
         Round {props.roundNumber + 1} / {props.lastRound}
       </h3>
-      <h3>Score : {props.score}</h3>
+      <h3>
+        {/* Score : {props.score}/ {props.lastRound} */}
+        Score: {pc}
+      </h3>
     </div>
   );
 }
