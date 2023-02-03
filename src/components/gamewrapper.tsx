@@ -3,6 +3,7 @@ import { FlagCard } from "./flagcard";
 import { OptionsCard } from "./optionscard";
 import { useMemo, useState } from "react";
 import { checkAnswer } from "../utilities/flagdata";
+import { NextButton } from "./nextbutton";
 
 type Props = {
   game: GameData;
@@ -37,6 +38,11 @@ export function GameWrapper({ ...props }: Props) {
     setIsDisabled(true);
   };
 
+  const userClickedNext = () => {
+    // click handler to advance to next round
+    alert("You clicked next");
+  };
+
   return (
     <div>
       <FlagCard answer={currentRound.answer} />
@@ -46,6 +52,7 @@ export function GameWrapper({ ...props }: Props) {
         choices={currentRound.choices}
         chooseAnswer={userChoseAnswer}
       />
+      <NextButton isDisabled={!isDisabled} onNextClick={userClickedNext} />
     </div>
   );
 }
