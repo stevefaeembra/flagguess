@@ -25,6 +25,6 @@ export interface UserAnswer {
 export interface Guess {
   // user guess
   userGuessed: Flag,
-  correct: false,
+  correct: boolean,
   correctAnswer: Flag,
 }
