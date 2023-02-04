@@ -23,7 +23,7 @@ const getChoices = (answer:Flag) : Flag[] => {
   const isocodes = Object.keys(ISOCODES);
   const options = Object.entries(ISOCODES);
   while (choices.length<=5) {
-    const pick = parseInt(Math.random() * parseFloat(isocodes.length));
+    const pick = parseInt((Math.random() * isocodes.length).toString());
     const [code,name] = options[pick];
     // prevent duplicates!
     if (!choices.find(existing => existing.isocode === code)) {
@@ -56,8 +56,13 @@ export const checkAnswer  = (round: Round, isoCode: string) : boolean => {
 
 export const getGame = (numberRounds: Number) : GameData => {
   let gameRounds : Round[] = [];
-  for (let i=0; i<numberRounds; i++) {
-    gameRounds = [...gameRounds, getRound()]
+  while (gameRounds.length < numberRounds) {
+    // prevent same flag appearing more than once in a game
+    const candidateRound = getRound();
+    const isDuplicated = gameRounds.find(flag => flag.answer.isocode === candidateRound.answer.isocode);
+    if (!isDuplicated) {
+      gameRounds = [...gameRounds, candidateRound];
+    }
   }
   return {
     roundNumber: 0,
