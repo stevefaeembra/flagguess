@@ -5,7 +5,7 @@ import { Flag, Round, GameData } from "../types/interfaces";
 const getRandomFlag = () : Flag => {
   // get a random isocode + country from list
   const isocodes = Object.keys(ISOCODES);
-  const pick = parseInt(Math.random() * parseFloat(isocodes.length));
+  const pick = parseInt((Math.random() * isocodes.length).toString());
   const options = Object.entries(ISOCODES);
   const [code,name] = options[pick];
   return(
