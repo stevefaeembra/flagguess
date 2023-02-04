@@ -1,7 +1,7 @@
 import { Flag, GameData, Guess, Round } from "../types/interfaces";
 import { FlagCard } from "./flagcard";
 import { OptionsCard } from "./optionscard";
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { checkAnswer } from "../utilities/flagdata";
 import { NextButton } from "./nextbutton";
 import { ScoreCard } from "./scorecard";
@@ -56,17 +56,19 @@ export function GameWrapper({ ...props }: Props) {
   };
 
   return !isGameOver ? (
-    <>
-      <FlagCard answer={currentRound?.answer} />
-      <OptionsCard
-        isDisabled={isDisabled}
-        userGuess={userGuess}
-        choices={currentRound?.choices}
-        chooseAnswer={userChoseAnswer}
-      />
-      <ScoreCard score={score} roundNumber={roundNumber} lastRound={maxRound} />
-      <NextButton isDisabled={!isDisabled} onNextClick={userClickedNext} />
-    </>
+    <Fragment>
+      <div className="my-0">
+        <FlagCard answer={currentRound?.answer} />
+        <ScoreCard score={score} roundNumber={roundNumber} lastRound={maxRound} />
+        <OptionsCard
+          isDisabled={isDisabled}
+          userGuess={userGuess}
+          choices={currentRound?.choices}
+          chooseAnswer={userChoseAnswer}
+        />
+        <NextButton isDisabled={!isDisabled} onNextClick={userClickedNext} />
+      </div>
+    </Fragment>
   ) : (
     <FinalScore numberRight={score} numberRounds={maxRound} onNewGameClick={props.onNewGame} />
   );
