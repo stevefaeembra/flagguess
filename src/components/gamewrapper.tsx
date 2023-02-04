@@ -9,6 +9,7 @@ import { FinalScore } from "./finalscore";
 
 type Props = {
   game: GameData;
+  onNewGame: Function;
 };
 
 export function GameWrapper({ ...props }: Props) {
@@ -67,6 +68,6 @@ export function GameWrapper({ ...props }: Props) {
       <NextButton isDisabled={!isDisabled} onNextClick={userClickedNext} />
     </>
   ) : (
-    <FinalScore numberRight={score} numberRounds={maxRound} onNewGameClick={() => alert("New game")} />
+    <FinalScore numberRight={score} numberRounds={maxRound} onNewGameClick={props.onNewGame} />
   );
 }
