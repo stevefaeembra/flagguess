@@ -16,8 +16,8 @@ export function FinalScore({ ...props }: Props) {
           {props.numberRight} / {props.numberRounds}
         </h1>
         <div>
-          <div className="radial-progress text-primary" style={{ "--value": percent }}>
-            {percent}%
+          <div className="radial-progress text-primary" style={{ "--value": percent, "--size": "16rem" }}>
+            <h1>{percent}%</h1>
           </div>
         </div>
       </div>
