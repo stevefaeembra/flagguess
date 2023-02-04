@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { checkAnswer } from "../utilities/flagdata";
 import { NextButton } from "./nextbutton";
 import { ScoreCard } from "./scorecard";
+import { FinalScore } from "./finalscore";
 
 type Props = {
   game: GameData;
@@ -13,8 +14,16 @@ type Props = {
 export function GameWrapper({ ...props }: Props) {
   const [userGuess, setUserGuess] = useState<Guess | undefined>();
   const [isDisabled, setIsDisabled] = useState(false);
+  const [isGameOver, setIsGameOver] = useState(false);
   const [roundNumber, setRoundNumber] = useState(0);
-  const currentRound = useMemo(() => props.game.rounds[roundNumber], [roundNumber]);
+  const currentRound = useMemo(() => {
+    if (roundNumber < props.game.rounds.length) {
+      return props.game.rounds[roundNumber];
+    } else {
+      setIsGameOver(true);
+      return {};
+    }
+  }, [roundNumber]);
   const maxRound = props.game.rounds.length;
   const [score, setScore] = useState(0);
 
@@ -45,8 +54,8 @@ export function GameWrapper({ ...props }: Props) {
     setRoundNumber(roundNumber + 1);
   };
 
-  return (
-    <div>
+  return !isGameOver ? (
+    <>
       <FlagCard answer={currentRound?.answer} />
       <OptionsCard
         isDisabled={isDisabled}
@@ -54,8 +63,10 @@ export function GameWrapper({ ...props }: Props) {
         choices={currentRound?.choices}
         chooseAnswer={userChoseAnswer}
       />
-      <ScoreCard score={score} roundNumber={roundNumber} lastRound={20} />
+      <ScoreCard score={score} roundNumber={roundNumber} lastRound={maxRound} />
       <NextButton isDisabled={!isDisabled} onNextClick={userClickedNext} />
-    </div>
+    </>
+  ) : (
+    <FinalScore numberRight={score} numberRounds={maxRound} onNewGameClick={() => alert("New game")} />
   );
 }
