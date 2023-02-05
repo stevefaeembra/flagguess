@@ -7,7 +7,7 @@ import { GameWrapper } from "./components/gamewrapper";
 export function App() {
   const game = useMemo(() => {
     // generate a random game of 20 flags
-    const myGame = getGame(20);
+    const myGame = getGame(50);
     return myGame;
   }, [getGame]);
 

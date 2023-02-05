@@ -4,7 +4,7 @@ import { OptionsCard } from "./optionscard";
 import { Fragment, useMemo, useState } from "react";
 import { checkAnswer } from "../utilities/flagdata";
 import { NextButton } from "./nextbutton";
-import { ScoreCard } from "./scorecard";
+import { ProgressBar, ScoreCard } from "./progressbar";
 import { FinalScore } from "./finalscore";
 
 type Props = {
@@ -59,7 +59,7 @@ export function GameWrapper({ ...props }: Props) {
     <Fragment>
       <div className="my-0">
         <FlagCard answer={currentRound?.answer} />
-        <ScoreCard score={score} roundNumber={roundNumber} lastRound={maxRound} />
+        <ProgressBar roundNumber={roundNumber} lastRound={maxRound} />
         <OptionsCard
           isDisabled={isDisabled}
           userGuess={userGuess}
