@@ -4,7 +4,7 @@ import { OptionsCard } from "./optionscard";
 import { Fragment, useMemo, useState } from "react";
 import { checkAnswer } from "../utilities/flagdata";
 import { NextButton } from "./nextbutton";
-import { ProgressBar, ScoreCard } from "./progressbar";
+import { ProgressBar } from "./progressbar";
 import { FinalScore } from "./finalscore";
 
 type Props = {
@@ -42,7 +42,7 @@ export function GameWrapper({ ...props }: Props) {
       setUserGuess({
         userGuessed: chosenAnswer,
         correct: false,
-        correctAnswer: currentRound.answer,
+        correctAnswer: currentRound?.answer,
       });
     }
     setIsDisabled(true);

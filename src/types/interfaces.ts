@@ -5,8 +5,8 @@ export interface Flag {
 
 export interface Round {
   // represents six flags, one of which is correct
-  answer: Flag;
-  choices: Flag[];
+  answer?: Flag;
+  choices?: Flag[];
 }
 
 export interface GameData {
@@ -24,7 +24,7 @@ export interface UserAnswer {
 
 export interface Guess {
   // user guess
-  userGuessed: Flag,
-  correct: boolean,
-  correctAnswer: Flag,
+  userGuessed?: Flag,
+  correct?: boolean,
+  correctAnswer?: Flag,
 }

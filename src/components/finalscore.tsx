@@ -15,11 +15,11 @@ export function FinalScore({ ...props }: Props) {
         <h1>
           {props.numberRight} / {props.numberRounds}
         </h1>
-        <div>
-          <div className="radial-progress text-primary" style={{ "--value": percent, "--size": "16rem" }}>
+        {/* <div>
+          <div className="radial-progress text-primary" style={{ "value": percent, "--size": "16rem" }}>
             <h1>{percent}%</h1>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="mt-6">
         <button onClick={() => props.onNewGameClick()} className="btn btn-block">

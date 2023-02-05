@@ -1,7 +1,7 @@
 import { Flag, Guess } from "../types/interfaces";
 
 type Props = {
-  choices: Flag[];
+  choices: Flag[] | undefined;
   chooseAnswer: Function;
   userGuess: Guess | undefined;
   isDisabled: boolean;

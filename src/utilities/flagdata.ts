@@ -49,8 +49,8 @@ const getRound = () : Round => {
 
 export const checkAnswer  = (round: Round, isoCode: string) : boolean => {
   // return true if it's correct
-  const matchy = round.choices.find((flag) => flag.isocode === isoCode);
-  const rightGuess = matchy?.isocode === round.answer.isocode;
+  const matchy = round?.choices?.find((flag) => flag.isocode === isoCode);
+  const rightGuess = matchy?.isocode === round?.answer?.isocode;
   return rightGuess;
 }
 
@@ -59,7 +59,7 @@ export const getGame = (numberRounds: Number) : GameData => {
   while (gameRounds.length < numberRounds) {
     // prevent same flag appearing more than once in a game
     const candidateRound = getRound();
-    const isDuplicated = gameRounds.find(flag => flag.answer.isocode === candidateRound.answer.isocode);
+    const isDuplicated = gameRounds.find(flag => flag?.answer?.isocode === candidateRound?.answer?.isocode);
     if (!isDuplicated) {
       gameRounds = [...gameRounds, candidateRound];
     }
